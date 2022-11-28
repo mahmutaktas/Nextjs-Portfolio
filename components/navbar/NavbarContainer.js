@@ -1,0 +1,38 @@
+import React from "react";
+import { Box } from "@mui/material";
+import { alpha, styled } from "@mui/material/styles";
+import HomeButton from "./HomeButton";
+import NavbarItem from "./NavbarItem";
+
+const Container = styled(Box)(({ theme }) => ({
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "1rem",
+    paddingLeft: "2.6rem",
+    paddingTop: "1.5rem",
+    backgroundColor: "#0a192f",
+}));
+
+const ItemsContainer = styled(Box)(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+}));
+
+function NavbarContainer() {
+    return (
+        <Container>
+            <HomeButton />
+
+            <ItemsContainer>
+                <NavbarItem title={"About"} page={"about"} />
+                <NavbarItem title={"Experience"} page={"experience"} />
+                <NavbarItem title={"Work"} page={"work"} />
+                <NavbarItem title={"Contact"} page={"contact"} />
+            </ItemsContainer>
+        </Container>
+    );
+}
+
+export default NavbarContainer;
