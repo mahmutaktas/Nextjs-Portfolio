@@ -10,6 +10,7 @@ const Container = ({ children, ...props }) => {
                 backgroundColor: "#0a192f",
                 height: "100vh",
                 width: "100vw",
+                overflowX: "hidden",
             }}
         >
             <Head>

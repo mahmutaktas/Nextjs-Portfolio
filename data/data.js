@@ -11,4 +11,41 @@ export const data = {
     images: {
         profile_picture: "profile-pic.jpg",
     },
+    projects: [
+        {
+            title: "Nextjs Portfolio",
+            description:
+                "A portfolio web application build with Nextjs. It provides a simple and elegant design for developers to show their work.A portfolio web application build with Nextjs. It provides a simple and elegant design for developers to show their work.",
+            image: "nexjts-portfolio.png",
+            link: "https://github.com/mahmutaktas/Nextjs-Portfolio",
+        },
+        {
+            title: "Nextjs Portfolio",
+            description:
+                "A portfolio web application build with Nextjs. It provides a simple and elegant design for developers to show their work.",
+            image: "nexjts-portfolio.png",
+            link: "https://github.com/mahmutaktas/Nextjs-Portfolio",
+        },
+        {
+            title: "Nextjs Portfolio",
+            description:
+                "A portfolio web application build with Nextjs. It provides a simple and elegant design for developers to show their work.",
+            image: "nexjts-portfolio.png",
+            link: "https://github.com/mahmutaktas/Nextjs-Portfolio",
+        },
+        {
+            title: "Nextjs Portfolio",
+            description:
+                "A portfolio web application build with Nextjs. It provides a simple and elegant design for developers to show their work.",
+            image: "nexjts-portfolio.png",
+            link: "https://github.com/mahmutaktas/Nextjs-Portfolio",
+        },
+        {
+            title: "Nextjs Portfolio",
+            description:
+                "A portfolio web application build with Nextjs. It provides a simple and elegant design for developers to show their work.",
+            image: "nexjts-portfolio.png",
+            link: "https://github.com/mahmutaktas/Nextjs-Portfolio",
+        },
+    ],
 };
