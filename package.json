@@ -2,10 +2,11 @@
   "name": "nextjs-portfolio",
   "version": "0.1.0",
   "private": true,
+  "main": "_app.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node app.js; next start -p ${PORT:-8080}",
     "lint": "next lint"
   },
   "dependencies": {
