@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Box, Tooltip } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
-import Image from "next/image";
+import Link from "next/link";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { CgWebsite } from "react-icons/cg";
 
-const ProjectContainer = styled(Box)(({ showAllDescription }) => ({
+const ProjectContainer = styled(Box)(({}) => ({
     display: "flex",
-    width: 500,
-    height: showAllDescription ? "100%" : 100,
+    width: 560,
     cursor: "pointer",
     marginBottom: "2rem",
 }));
@@ -36,25 +37,67 @@ const ProjectDescriptionText = styled(Box)(({ showAllDescription }) => ({
     height: "100%",
 }));
 
+const IconContainer = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "1rem",
+}));
+
+const Icon = styled(Box)(({ theme }) => ({
+    fontSize: 30,
+    cursor: "pointer",
+    "&:hover": {
+        color: "#51cfb7",
+    },
+}));
+
 export default function ProjectItem({ project }) {
     const [isHovered, setIsHovered] = useState(false);
     const [showAllDescription, setShowAllDescription] = useState(false);
     return (
-        <ProjectContainer
-            showAllDescription={showAllDescription}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onClick={() => window.open(project.link, "_blank")}
-        >
-            <Image
-                src={`/images/${project.image}`}
-                srcSet={`/images/${project.image}`}
-                alt={"profile picture"}
-                width={90}
-                height={90}
-            />
+        <ProjectContainer>
+            <Box sx={{ display: "flex", flexDirection: "column", width: 130 }}>
+                <img
+                    src={`/images/${project.image}`}
+                    alt={"profile picture"}
+                    width={120}
+                    height={90}
+                    style={{ border: "3px solid #A9B6DD", borderRadius: 4 }}
+                />
+                <IconContainer>
+                    {project.github ? (
+                        <Tooltip title="Github">
+                            <Link href={project.github} target="_blank">
+                                <Icon>
+                                    <AiFillGithub></AiFillGithub>
+                                </Icon>
+                            </Link>
+                        </Tooltip>
+                    ) : null}
+
+                    {project.github && project.website ? (
+                        <Box sx={{ width: "1rem", visibility: "hidden" }}></Box>
+                    ) : null}
+
+                    {project.website ? (
+                        <Tooltip title="Website">
+                            <Link href={project.website} target="_blank">
+                                <Icon>
+                                    <CgWebsite></CgWebsite>
+                                </Icon>
+                            </Link>
+                        </Tooltip>
+                    ) : null}
+                </IconContainer>
+            </Box>
             <ProjectInfoContainer>
-                <ProjectTitleText isHovered={isHovered}>{project.title}</ProjectTitleText>
+                <ProjectTitleText
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    isHovered={isHovered}
+                >
+                    {project.title}
+                </ProjectTitleText>
                 {showAllDescription ? (
                     <Tooltip title={"Click to see less description"} followCursor>
                         <ProjectDescriptionText

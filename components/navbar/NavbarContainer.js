@@ -28,7 +28,6 @@ function NavbarContainer() {
             <ItemsContainer>
                 <NavbarItem title={"About"} page={"about"} />
                 <NavbarItem title={"Projects"} page={"projects"} />
-                <NavbarItem title={"Contact"} page={"contact"} />
             </ItemsContainer>
         </Container>
     );
