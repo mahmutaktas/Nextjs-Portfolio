@@ -10,14 +10,15 @@ const TextContainer = styled(Box)(({ isMobile }) => ({
     display: "flex",
     flexDirection: "column",
     marginLeft: isMobile ? "7vw" : "30vw",
-    marginTop: isMobile ? "11vh" : "8vh",
+    marginTop: isMobile ? "11vh" : "12vh",
 }));
 
-const GreetingText = styled(Box)(({ theme }) => ({
+const GreetingText = styled(Box)(({ isMobile }) => ({
     display: "flex",
     alignItems: "center",
     color: "#51cfb7",
     fontSize: 20,
+    marginTop: isMobile ? "1.5rem" : "0px",
 }));
 
 const NameText = styled(Box)(({ theme }) => ({
@@ -67,7 +68,7 @@ export default function Home() {
     return (
         <Container title={`${data.name} | Portfolio`}>
             <TextContainer isMobile={isMobile}>
-                <GreetingText>Hi, my name is</GreetingText>
+                <GreetingText isMobile={isMobile}>Hi, my name is</GreetingText>
                 <NameText>{data.name}.</NameText>
                 <SummaryText>{data.summary}.</SummaryText>
                 <DescriptionText>{data.description}</DescriptionText>
