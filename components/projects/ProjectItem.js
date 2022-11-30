@@ -5,11 +5,13 @@ import Link from "next/link";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { CgWebsite } from "react-icons/cg";
 
-const ProjectContainer = styled(Box)(({}) => ({
+const ProjectContainer = styled(Box)(({ isMobile }) => ({
     display: "flex",
-    width: 560,
+    width: isMobile ? "95%" : 560,
     cursor: "pointer",
     marginBottom: "2rem",
+    justifyContent: isMobile ? "center" : "flex-start",
+    alignItems: isMobile ? "center" : "flex-start",
 }));
 
 const ProjectInfoContainer = styled(Box)(({ theme }) => ({
@@ -51,11 +53,11 @@ const Icon = styled(Box)(({ theme }) => ({
     },
 }));
 
-export default function ProjectItem({ project }) {
+export default function ProjectItem({ project, isMobile }) {
     const [isHovered, setIsHovered] = useState(false);
     const [showAllDescription, setShowAllDescription] = useState(false);
     return (
-        <ProjectContainer>
+        <ProjectContainer isMobile={isMobile}>
             <Box sx={{ display: "flex", flexDirection: "column", width: 130 }}>
                 <img
                     src={`/images/${project.image}`}

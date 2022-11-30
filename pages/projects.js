@@ -3,16 +3,17 @@ import { alpha, styled } from "@mui/material/styles";
 import { data } from "../data/data";
 import Container from "../components/Container";
 import ProjectItem from "../components/projects/ProjectItem";
-import Link from "next/link";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-const PageContainer = styled(Box)(({ theme }) => ({
+const PageContainer = styled(Box)(({ isMobile }) => ({
     display: "flex",
     flexDirection: "row",
-    marginLeft: "10vw",
-    marginTop: "6vh",
+    marginLeft: isMobile ? "0px" : "10vw",
+    marginBottom: isMobile ? "3rem" : "1rem",
+    padding: isMobile ? "2rem" : "1rem",
 }));
 
-const PageTitle = styled(Box)(({ theme }) => ({
+const PageTitle = styled(Box)(({ isMobile }) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
@@ -20,28 +21,41 @@ const PageTitle = styled(Box)(({ theme }) => ({
     color: "#ccd6f6",
     fontSize: 40,
     fontWeight: "bold",
-    marginBottom: "2rem",
+    marginTop: isMobile ? "11vh" : "12vh",
+    marginBottom: isMobile ? "1rem" : "2rem",
 }));
 
 export default function Projects() {
+    const isMobile = useMediaQuery("(max-width:600px)");
+
     return (
         <Container title={`${data.name} | Projects`}>
-            <PageTitle>Projects</PageTitle>
-            <PageContainer>
-                <Box sx={{ display: "flex", flexDirection: "column", marginRight: "7rem" }}>
-                    {data.projects
-                        .filter((project, idx) => idx % 2 == 0)
-                        .map((project, idx) => (
-                            <ProjectItem key={idx} project={project} />
+            <PageTitle isMobile={isMobile}>Projects</PageTitle>
+            <PageContainer isMobile={isMobile}>
+                {isMobile ? (
+                    <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        {data.projects.map((project, idx) => (
+                            <ProjectItem key={idx} project={project} isMobile={isMobile} />
                         ))}
-                </Box>
-                <Box sx={{ display: "flex", flexDirection: "column" }}>
-                    {data.projects
-                        .filter((project, idx) => idx % 2 == 1)
-                        .map((project, idx) => (
-                            <ProjectItem key={idx} project={project} />
-                        ))}
-                </Box>
+                    </Box>
+                ) : (
+                    <>
+                        <Box sx={{ display: "flex", flexDirection: "column", marginRight: "7rem" }}>
+                            {data.projects
+                                .filter((project, idx) => idx % 2 == 0)
+                                .map((project, idx) => (
+                                    <ProjectItem key={idx} project={project} />
+                                ))}
+                        </Box>
+                        <Box sx={{ display: "flex", flexDirection: "column" }}>
+                            {data.projects
+                                .filter((project, idx) => idx % 2 == 1)
+                                .map((project, idx) => (
+                                    <ProjectItem key={idx} project={project} />
+                                ))}
+                        </Box>
+                    </>
+                )}
             </PageContainer>
         </Container>
     );

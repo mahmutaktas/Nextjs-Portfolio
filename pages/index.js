@@ -4,12 +4,13 @@ import { data } from "../data/data";
 import Container from "../components/Container";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import Link from "next/link";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-const TextContainer = styled(Box)(({ theme }) => ({
+const TextContainer = styled(Box)(({ isMobile }) => ({
     display: "flex",
     flexDirection: "column",
-    marginLeft: "30vw",
-    marginTop: "5vh",
+    marginLeft: isMobile ? "7vw" : "30vw",
+    marginTop: isMobile ? "11vh" : "8vh",
 }));
 
 const GreetingText = styled(Box)(({ theme }) => ({
@@ -61,9 +62,11 @@ const Icon = styled(Box)(({ theme }) => ({
 }));
 
 export default function Home() {
+    const isMobile = useMediaQuery("(max-width:600px)");
+
     return (
         <Container title={`${data.name} | Portfolio`}>
-            <TextContainer>
+            <TextContainer isMobile={isMobile}>
                 <GreetingText>Hi, my name is</GreetingText>
                 <NameText>{data.name}.</NameText>
                 <SummaryText>{data.summary}.</SummaryText>

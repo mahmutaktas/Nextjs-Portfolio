@@ -12,7 +12,10 @@ const Container = styled(Box)(({ theme }) => ({
     padding: "1rem",
     paddingLeft: "2.6rem",
     paddingTop: "1.5rem",
+    paddingBottom: "0.5rem",
     backgroundColor: "#0a192f",
+    position: "fixed",
+    top: 0,
 }));
 
 const ItemsContainer = styled(Box)(({ theme }) => ({
